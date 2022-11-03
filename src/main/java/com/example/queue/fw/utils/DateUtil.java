@@ -1,4 +1,4 @@
-package com.example.queue.utils;
+package com.example.queue.fw.utils;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;

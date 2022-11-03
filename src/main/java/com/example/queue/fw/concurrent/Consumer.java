@@ -1,13 +1,13 @@
 package com.example.queue.fw.concurrent;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.queue.fw.exception.LogicException;
+import org.apache.log4j.Logger;
 
 import java.util.Date;
 import java.util.List;
 
 public abstract class Consumer<T extends ConcurrentMessage> extends Worker {
-    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private static final org.apache.log4j.Logger logger = Logger.getLogger(Consumer.class);
     protected QueueRetry queueRetry;
     private T message;
 
@@ -15,7 +15,7 @@ public abstract class Consumer<T extends ConcurrentMessage> extends Worker {
     }
 
     public void process() throws Exception {
-        this.message = this.queue.dequeue();
+        this.message = (T) this.queue.dequeue();
         this.logStart();
         this.message.setConsumerName(this.getWorkerName());
 

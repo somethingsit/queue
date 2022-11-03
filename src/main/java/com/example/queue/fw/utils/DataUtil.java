@@ -1,10 +1,8 @@
-package com.example.queue.utils;
+package com.example.queue.fw.utils;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.Assert;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.management.Query;
@@ -828,43 +826,6 @@ public class DataUtil {
 
     }
 
-    /**
-     * Convert TYPE cua Sale sang type cua QLKTCN khi sinh cong viec
-     * NamDX (20151007) bo ham nay o day vi khong duoc dung Const o DataUtil
-     * @param lineType
-     * @return
-     * @author KhuongDV
-     */
-//    public static String getServiceTypeCodeByLineType(String lineType) {
-//        if (com.viettel.bccs.sale.common.Const.LINE_TYPE_A_ON_P.equals(lineType)) {
-//            return com.viettel.bccs.sale.common.Const.JOB_CREATE_TASK.TASK_LINE_TYPE_A_ON_P;
-//        }
-//
-//        if (com.viettel.bccs.sale.common.Const.LINE_TYPE_P_ON_A.equals(lineType)) {
-//            return com.viettel.bccs.sale.common.Const.JOB_CREATE_TASK.TASK_LINE_TYPE_P_ON_A;
-//        }
-//        if (com.viettel.bccs.sale.common.Const.LINE_TYPE_A_AND_P.equals(lineType)) {
-//            return com.viettel.bccs.sale.common.Const.JOB_CREATE_TASK.TASK_LINE_TYPE_A_AND_P;
-//        }
-//        return lineType;
-//    }
-
-//    public static boolean checkSubIsCd(Long telecom_service_id) {
-//        if (!DataUtil.safeEqual(telecom_service_id, Const.TELECOM_SERVICE_ID.MOBILE)
-//                && !DataUtil.safeEqual(telecom_service_id, Const.TELECOM_SERVICE_ID.HOMEPHONE)) {
-//            return true;
-//        }
-//        return false;
-//    }
-
-    /**
-     * Tim nhung phan tu co o collection a ma khong co o collection b
-     *
-     * @param a
-     * @param b
-     * @param <T>
-     * @return
-     */
     public static <T> List<T> subtract(Collection<T> a, Collection<T> b) {
         if (a == null || b == null) {
             return new ArrayList<>();
@@ -883,13 +844,6 @@ public class DataUtil {
         return list;
     }
 
-    /**
-     * Trim string
-     *
-     * @param str
-     * @param alt: sau thay the khi str null
-     * @return
-     */
     public static String trim(String str, String alt) {
         if (str == null) {
             return alt;

@@ -1,5 +1,7 @@
 package com.example.queue.fw.concurrent;
 
+import brave.Span;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public abstract class ConcurrentMessage implements Serializable {
     private String consumerName;
     private int retryCount;
     private String kpiId;
+    private Span span;
 
     public ConcurrentMessage() {
     }
@@ -88,4 +91,11 @@ public abstract class ConcurrentMessage implements Serializable {
         }
     }
 
+    public Span getSpan() {
+        return this.span;
+    }
+
+    public void setSpan(Span span) {
+        this.span = span;
+    }
 }

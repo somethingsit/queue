@@ -2,7 +2,7 @@ package com.example.queue.fw.concurrent;
 
 import brave.Span;
 import brave.Tracing;
-import com.example.queue.utils.DataUtil;
+import com.example.queue.fw.utils.DataUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -30,10 +30,6 @@ public class Queue<T extends ConcurrentMessage> implements IQueue<T>, Initializi
     private boolean cannotEnqueue;
     private boolean enableTraceLog = true;
     private String serverName;
-    @Autowired
-    private Tracing tracing;
-    @Autowired
-    CheckQueueService checkQueueService;
 
     public Queue() {
     }
@@ -61,25 +57,20 @@ public class Queue<T extends ConcurrentMessage> implements IQueue<T>, Initializi
             message.setKpiId(LanguageBundleUtil.getReqId());
         }
 
-        if (this.tracing.tracer() != null && message.getSpan() == null) {
-            message.setSpan(this.tracing.tracer().currentSpan());
-        }
-
         this.cannotEnqueue = !result;
         if (result) {
             if (this.enableTraceLog) {
                 logger.info("Entering|" + this.uniqueName + ".enqueue(" + this.queue.size() + ")[" + message.getMessageId() + "][" + message.getTraceInfo() + "]|0||");
             }
         } else if (this.joinSysOverload) {
-            this.checkQueueService.setSysOverload(true);
-            logger.fatal(this.toString() + " can not enqueue");
+            logger.error(this.toString() + " can not enqueue");
         }
 
         return result;
     }
 
     public T dequeue() throws InterruptedException {
-        T message = (ConcurrentMessage)this.queue.take();
+        T message = (T) this.queue.take();
         message.setOutTime(new Date(), this.uniqueName);
         if (message.getSpan() != null) {
             spanGroupPcContext.set(message.getSpan());
@@ -98,7 +89,7 @@ public class Queue<T extends ConcurrentMessage> implements IQueue<T>, Initializi
         Iterator var3 = lst.iterator();
 
         while(var3.hasNext()) {
-            T msg = (ConcurrentMessage)var3.next();
+            T msg = (T) var3.next();
             msg.setOutTime(new Date(), this.uniqueName);
         }
 

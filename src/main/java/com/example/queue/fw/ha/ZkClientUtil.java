@@ -1,6 +1,6 @@
 package com.example.queue.fw.ha;
 
-import com.example.queue.utils.DataUtil;
+import com.example.queue.fw.utils.DataUtil;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
