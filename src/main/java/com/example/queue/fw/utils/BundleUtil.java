@@ -6,7 +6,6 @@ import com.example.queue.fw.dto.Locate;
 import com.example.queue.fw.exception.UnsupportedEnvironmentException;
 import com.google.common.collect.Maps;
 import org.apache.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 

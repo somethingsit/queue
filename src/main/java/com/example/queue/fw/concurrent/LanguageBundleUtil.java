@@ -53,8 +53,8 @@ public class LanguageBundleUtil {
         if (genericWebInfo == null || reset) {
             genericWebInfo = new GenericWebInfo();
             genericWebInfo.setReqId(getRandomKpiId());
-            genericWebInfo.setLanguage(BundleUtil.getDefaultLocate().getLanguage());
-            genericWebInfo.setCountry(BundleUtil.getDefaultLocate().getCountry());
+            genericWebInfo.setLanguage("vi");
+            genericWebInfo.setCountry("vn");
             webInfoContext.set(genericWebInfo);
             ThreadContext.put("kpi", genericWebInfo.getReqId());
         }

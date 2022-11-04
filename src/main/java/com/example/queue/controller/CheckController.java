@@ -29,5 +29,4 @@ public class CheckController {
         }
         return ResponseEntity.ok().body(token);
     }
-
 }

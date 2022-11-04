@@ -1,6 +1,6 @@
 package com.example.queue.fw.concurrent;
 
-import com.example.queue.fw.ha.ZkProcess;
+import com.example.queue.fw.client.ZkProcess;
 import com.example.queue.fw.utils.DataUtil;
 import org.apache.logging.log4j.ThreadContext;
 import org.slf4j.Logger;

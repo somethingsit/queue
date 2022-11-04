@@ -1,6 +1,6 @@
 package com.example.queue.fw.concurrent;
 
-import com.example.queue.fw.ha.ZkProcess;
+import com.example.queue.fw.client.ZkProcess;
 import com.example.queue.fw.service.SystemConfigService;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;

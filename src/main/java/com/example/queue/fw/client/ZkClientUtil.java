@@ -1,4 +1,4 @@
-package com.example.queue.fw.ha;
+package com.example.queue.fw.client;
 
 import com.example.queue.fw.utils.DataUtil;
 import org.apache.zookeeper.*;
